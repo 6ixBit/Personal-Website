@@ -1,5 +1,6 @@
 from . import app
-from flask import render_template, make_response
+from .forms import Contact_form
+from flask import render_template, make_response, request
 
 @app.route('/')
 def index():
@@ -14,7 +15,22 @@ def projects():
     return res
 
 
-@app.route('/contact')
+@app.route('/contact', methods=['POST', 'GET'])
 def contact():
-    res = make_response(render_template('contact.html'), 200)
+    # Create instance of forms to be passed to template
+    form = Contact_form()
+
+    if request.method == 'POST':
+        if form.validate_on_submit:
+            print(form.name.data)
+            print(form.email.data)
+            print(form.subject.data)
+            print(form.message.data)
+            return 'Success', 200
+        else:
+            return 'Data not valid'
+
+     # Respond with contact page, pass a form instance & return 200
+    res = make_response(render_template('contact.html', form=form), 200)
+
     return res

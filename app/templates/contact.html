@@ -1,9 +1,24 @@
 {% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block navbar %}
 {% include 'sub_templates/nav_bar.html' %}
 {% endblock %}
 
 {% block content %}
-<p>Contact me</p>
+<center><h1>Contact me</h1> <br> <br>
+
+    <form method="POST" action='' class='form-basic'>
+        {{ form.csrf_token }}
+        {{ wtf.form_errors(form)}}
+        <div class="col-md-4 col-md-offset-4">
+      
+          {{ wtf.form_field(form.name) }}
+          {{ wtf.form_field(form.email) }}
+          {{ wtf.form_field(form.subject) }}
+          {{ wtf.form_field(form.message, rows=5) }}
+          {{ wtf.form_field(form.submit, class='btn btn-primary') }}
+        </div>
+      </form>
+</center>
 {% endblock %}
