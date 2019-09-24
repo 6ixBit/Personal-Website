@@ -8,4 +8,4 @@ Bootstrap(app)
 nav = Nav(app)
 app.config.from_object(Config)
 
-from app import views, navigation
+from app import views, navigation, forms
