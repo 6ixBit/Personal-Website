@@ -1,2 +1,12 @@
 # Personal-Website
-My Personal website built with Flask &amp; Bootstrap
+My Personal website (work in progress) built with Flask &amp; Bootstrap 
+
+Tech Stack:
+
+- Flask
+- CircleCI
+- Docker
+- Celery
+- Redis (RQ server)
+- Postgres
+
