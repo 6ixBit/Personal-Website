@@ -7,6 +7,7 @@
 
 {% block content %}
 {{ super() }}
+
 <center><h1>Contact me</h1> <br> <br>
 
     <form method="POST" action='' class='form-basic'>
@@ -20,8 +21,8 @@
           {{ wtf.form_field(form.submit, class='btn btn-primary') }}
         </div>
       </form>
-</center>
 
+</center>
 {% block footer %}
 {% include 'sub_templates/footer.html' %}
 {% endblock footer %}

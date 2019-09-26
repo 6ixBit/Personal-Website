@@ -1,6 +1,8 @@
-from . import app
+from . import app, mail
 from .forms import Contact_form
-from flask import render_template, make_response, request
+from flask import render_template, make_response, request, redirect, url_for
+from flask_mail import Message
+from Config import Config
 
 @app.route('/')
 def index():
@@ -20,17 +22,27 @@ def contact():
     # Create instance of forms to be passed to template
     form = Contact_form()
 
+    # Set to true upon successful email transmission
+    email_sent = False
+
     if request.method == 'POST':
-        if form.validate_on_submit:
-            print(form.name.data)
-            print(form.email.data)
-            print(form.subject.data)
-            print(form.message.data)
-            return 'Success', 200
-        else:
-            return 'Data not valid'
+        if form.validate_on_submit():
+            msg = Message(subject=form.subject.data, recipients=[app.config['MAIL_USERNAME']], 
+            sender=app.config['MAIL_USERNAME'])
 
-     # Respond with contact page, pass a form instance & return 200
-    res = make_response(render_template('contact.html', form=form), 200)
+            msg.body = 'From: {} \n\n'.format(form.name.data) + form.message.data + '\n \n \n Sent by: {}'.format(form.email.data)
 
+            mail.send(msg)
+            #email_sent = True                    # Alert user that email has been sent
+
+            # Clear data in forms once e-mails sent & then return the page 
+            form.name.data = ''
+            form.email.data =''
+            form.subject.data = ''
+            form.message.data = ''
+     
+            return render_template('contact.html', form=form)
+      
+    # Respond with contact page, pass a form instance & return 200
+    res = make_response(render_template('contact.html', form=form, email_sent=email_sent), 200)
     return res
