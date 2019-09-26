@@ -15,4 +15,4 @@ migrate = Migrate(app, db)
 mail = Mail(app)
 
 
-from app import views, navigation, forms, models
+from app import views, navigation, forms, models, errors
