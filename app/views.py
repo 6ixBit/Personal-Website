@@ -38,7 +38,7 @@ def contact():
             msg.body = 'From: {} \n\n'.format(form.name.data) + form.message.data + '\n \n \n Sent by: {}'.format(form.email.data)
 
             mail.send(msg)
-            #email_sent = True                    # Alert user that email has been sent
+            email_sent = True                    # Alert user that email has been sent
 
             # Insert into DB
             user.name_ = form.name.data
@@ -56,8 +56,8 @@ def contact():
             form.subject.data = ''
             form.message.data = ''
      
-            return render_template('contact.html', form=form)
+            return render_template('contact.html', form=form, email_sent=email_sent) 
       
     # Respond with contact page, pass a form instance & return 200
-    res = make_response(render_template('contact.html', form=form, email_sent=email_sent), 200)
+    res = make_response(render_template('contact.html', form=form), 200)
     return res
