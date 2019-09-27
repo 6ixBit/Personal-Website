@@ -5,12 +5,12 @@
 <link rel="stylesheet" href="static/css/dark-grey.css" />
 <body class="hack dark-grey">
 <div class='container'>
+
 {% if email_sent %}
 <div class="alert alert-success">Success, Your info has been sent!</div>
 {% endif %}
 
 <center>
-
     <h1>Contact me</h1> 
 <div class="menu">
   <div class='grid left'>
@@ -35,16 +35,20 @@
         {{ form.csrf_token }}
         {{ wtf.form_errors(form)}}
         <div>
-          <fieldset class='form-group'>{{ wtf.form_field(form.name, placeholder='Your name..') }}</fieldset>
-          <fieldset class='form-group'>{{ wtf.form_field(form.email, placeholder='Your email..') }}</fieldset>
-          <fieldset class='form-group'>{{ wtf.form_field(form.subject, placeholder='Enter a subject..') }}</fieldset>
-          <fieldset class='form-group'>  {{ wtf.form_field(form.message, rows=5, placeholder='Write your message here..') }} </fieldset>
-          <fieldset class='form-group'> {{ wtf.form_field(form.submit, class='btn btn-primary btn-block') }}</fieldset>
+          <fieldset class='form-group'> {{ wtf.form_field(form.name, placeholder='Your name..') }} </fieldset>
+          <fieldset class='form-group'> {{ wtf.form_field(form.email, placeholder='Your email..') }} </fieldset>
+          <fieldset class='form-group'> {{ wtf.form_field(form.subject, placeholder='Enter a subject..') }} </fieldset>
+          <fieldset class='form-group'> {{ wtf.form_field(form.message, rows=5, placeholder='Write your message here..') }} </fieldset>
+          <fieldset class='form-group'> {{ wtf.form_field(form.submit, class='btn btn-primary btn-block') }} </fieldset>
         </div>
       </form>
 
 </center>
 </div>
+
+<footer>
+    {% include 'sub_templates/footer.html' %}
+</footer>
 </body>
 {% endblock content %}
 
