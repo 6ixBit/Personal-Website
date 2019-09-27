@@ -1,9 +1,19 @@
-{% extends 'bootstrap/base.html' %}
-
-{% block navbar %}
-{% include 'sub_templates/nav_bar.html' %}
-{% endblock %}
-
 {% block content %}
 <p>My Projects</p>
+
+<link rel="stylesheet" href="static/css/hack.css" />
+<link rel="stylesheet" href="static/css/dark-grey.css" />
+<body class="hack dark-grey">
+  <div class="menu">
+      <a class="menu-item">
+        item #1 <div class="pull-right">»</div>
+      </a>
+      <a class="menu-item active">
+        item #2 <div class="pull-right">»</div>
+      </a>
+      <a class="menu-item">
+        item #3 <div class="pull-right">»</div>
+      </a>
+    </div>
+</body>
 {% endblock %}
