@@ -1,31 +1,45 @@
 <html>
-
 <link rel="stylesheet" href="static/css/hack.css" />
 <link rel="stylesheet" href="static/css/dark-grey.css" />
+<head><link rel='icon' href='static/images/snake.png'></head>
 <body class="hack dark-grey">
-<div class='container'>
-
 <center>
 {% if title %}
-    <h1>{{ title }}</h1>
+    <h2><u>{{ title }}</u></h2>
+    <title>{{ title }}</title>
 {% endif %}
 </center>
 
+<div class='container'>
+<style>
+        a { color: #FF0000; } /* CSS link color */
+        blockquote { color: #FF0000; } /* CSS link color */
 
+        .hack hr:after {
+        content: "--------------------------------------------------------------------------------------------------------------------";
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 20px;
+        width: 100%;
+        word-wrap: break-word
+}
+</style>
+   
 <div class="menu">
-        <div class='grid left'>
-            <a class="menu-item active" href="{{ url_for('index') }}">             
+        <div class='grid right'>
+            <a class="menu-item {% if title == 'Home' %} active {% endif %}" href="{{ url_for('index') }}">             
             Home <div class="pull-right">»</div>
             </a>
         </div>
         
-        <div class='grid left'>
-            <a class="menu-item" href="{{ url_for('projects') }}">
+        <div class='grid right'>
+            <a class="menu-item {% if title == 'Projects' %} active {% endif %}" href="{{ url_for('projects') }}">
             Projects <div class="pull-right">»</div>
             </a>
         </div>
-            <div class='grid left'>
-            <a class="menu-item" href="{{ url_for('contact') }}">
+            <div class='grid right'>
+            <a class="menu-item {% if title == 'Contact' %} active {% endif %}" href="{{ url_for('contact') }}">
                 Contact <div class="pull-right">»</div>
                 </a>
             </div>
@@ -34,6 +48,18 @@
 
 {% endblock %}
 
+<footer>
+    <br>
+    <hr>
+    <h3>Connect with me</h3>
+    <div>
+        <img src='static/images/github-white.png' width='23' height='24'>
+        <a href='https://www.github.com/6ixbit'>GitHub</a>
+
+        <img src='static/images/link.png' width='30' height='32'>
+        <a href='https://www.linkedin.com/in/hamza-carew-26b05b159/'>Linkedin</a>
+    </div>
+</footer>
 </div>
 </body>
 </html>

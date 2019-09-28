@@ -1,15 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class='grid '
+<div class='grid'>
 <blockquote>
-  This page will mostly consist of my projectys that are hosted on Github, when the fallen comes. <br>
-  RIP to my boy xxTentacion, he was a real one.
+  These are some of the project i've worked on, they range from multiple areas that interest me. <br>
+  All available to see on my <a href='https://www.github.com/6ixbit'>Github.</a>
+
+
 </blockquote>
 
-<ul>
-    <li>Request Header Parser</li>
-    <li>Personal-Website</li>
-  </ul>
+<div class="card">
+    <header class="card-header">Request Header Parser</header>
+    <div class="card-content">
+      <div class="inner">
+         A microservice that parses the header of an incoming request built in Flask.
+
+         About
+        This application returns the header info of a request from a user once they connect to the site. 
+        It also consumes an API to perform IP lookups, so essentially all relevant data about the users request is returned to them and rendered in HTML.
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="card">
+    <header class="card-header">Personal-Website</header>
+    <div class="card-content">
+      <div class="inner">
+         My personal website built in Flask.
+
+         About
+        This application returns the header info of a request from a user once they connect to the site. 
+        It also consumes an API to perform IP lookups, so essentially all relevant data about the users request is returned to them and rendered in HTML.
+        </div>
+    </div>
+</div>
+
+
+
 </div>
 {% endblock %}
