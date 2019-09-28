@@ -1,36 +1,14 @@
 {% import 'bootstrap/wtf.html' as wtf %}
+{% extends 'base.html' %}
+
 
 {% block content %}
-<link rel="stylesheet" href="static/css/hack.css" />
-<link rel="stylesheet" href="static/css/dark-grey.css" />
-<body class="hack dark-grey">
-<div class='container'>
 
 {% if email_sent %}
-<div class="alert alert-success">Success, Your info has been sent!</div>
+<div class="alert alert-success"> Success, Your info has been sent! </div>
 {% endif %}
 
 <center>
-    <h1>Contact me</h1> 
-<div class="menu">
-  <div class='grid left'>
-    <a class="menu-item active" href="{{ url_for('index') }}">             
-      Home <div class="pull-right">»</div>
-    </a>
-  </div>
-
-  <div class='grid left'>
-    <a class="menu-item" href="{{ url_for('projects') }}">
-      Projects <div class="pull-right">»</div>
-    </a>
-  </div>
-   <div class='grid left'>
-      <a class="menu-item" href="{{ url_for('contact') }}">
-          Contact <div class="pull-right">»</div>
-        </a>
-   </div>
-</div>
-
     <form method="POST" action='' class='form'>
         {{ form.csrf_token }}
         {{ wtf.form_errors(form)}}
@@ -41,16 +19,9 @@
           <fieldset class='form-group'> {{ wtf.form_field(form.message, rows=5, placeholder='Write your message here..') }} </fieldset>
           <fieldset class='form-group'> {{ wtf.form_field(form.submit, class='btn btn-primary btn-block') }} </fieldset>
         </div>
-      </form> <hr>
-
+      </form> 
 </center>
-</div>
-
-
 </body>
-{% endblock content %}
 
-<footer>
-    {% include 'sub_templates/footer.html' %}
-</footer>
+{% endblock content %}
 
