@@ -3,11 +3,6 @@
 
 
 {% block content %}
-
-{% if email_sent %}
-<div class="alert alert-success"> Success, Your info has been sent! </div>
-{% endif %}
-
 <center>
     <form method="POST" action='' class='form'>
         {{ form.csrf_token }}
@@ -20,6 +15,9 @@
           <fieldset class='form-group'> {{ wtf.form_field(form.submit, class='btn btn-primary btn-block') }} </fieldset>
         </div>
       </form> 
+      {% if email_sent %}
+      <div class="alert alert-success"> Success, Your info has been sent! </div>
+      {% endif %}
 </center>
 </body>
 
