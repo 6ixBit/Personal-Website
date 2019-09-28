@@ -8,13 +8,13 @@ from Config import Config
 @app.route('/')
 def index():
 
-    res = make_response(render_template('index.html'), 200)                   # Generate response object and return 200
+    res = make_response(render_template('index.html', title='Home'), 200)                   # Generate response object and return 200
     return res
 
 
 @app.route('/projects')
 def projects():
-    res = make_response(render_template('projects.html'), 200)
+    res = make_response(render_template('projects.html', title='Projects'), 200)
     return res
 
 
@@ -56,8 +56,8 @@ def contact():
             form.subject.data = ''
             form.message.data = ''
      
-            return render_template('contact.html', form=form, email_sent=email_sent) 
+            return render_template('contact.html', form=form, email_sent=email_sent, title='Contact') 
       
     # Respond with contact page, pass a form instance & return 200
-    res = make_response(render_template('contact.html', form=form), 200)
+    res = make_response(render_template('contact.html', form=form, title='Contact'), 200)
     return res

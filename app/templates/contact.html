@@ -41,14 +41,16 @@
           <fieldset class='form-group'> {{ wtf.form_field(form.message, rows=5, placeholder='Write your message here..') }} </fieldset>
           <fieldset class='form-group'> {{ wtf.form_field(form.submit, class='btn btn-primary btn-block') }} </fieldset>
         </div>
-      </form>
+      </form> <hr>
 
 </center>
 </div>
 
+
+</body>
+{% endblock content %}
+
 <footer>
     {% include 'sub_templates/footer.html' %}
 </footer>
-</body>
-{% endblock content %}
 
