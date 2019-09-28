@@ -1,0 +1,39 @@
+<html>
+
+<link rel="stylesheet" href="static/css/hack.css" />
+<link rel="stylesheet" href="static/css/dark-grey.css" />
+<body class="hack dark-grey">
+<div class='container'>
+
+<center>
+{% if title %}
+    <h1>{{ title }}</h1>
+{% endif %}
+</center>
+
+
+<div class="menu">
+        <div class='grid left'>
+            <a class="menu-item active" href="{{ url_for('index') }}">             
+            Home <div class="pull-right">»</div>
+            </a>
+        </div>
+        
+        <div class='grid left'>
+            <a class="menu-item" href="{{ url_for('projects') }}">
+            Projects <div class="pull-right">»</div>
+            </a>
+        </div>
+            <div class='grid left'>
+            <a class="menu-item" href="{{ url_for('contact') }}">
+                Contact <div class="pull-right">»</div>
+                </a>
+            </div>
+</div>
+{% block content %}
+
+{% endblock %}
+
+</div>
+</body>
+</html>
