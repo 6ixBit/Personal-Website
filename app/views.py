@@ -14,7 +14,7 @@ q = Queue(connection=r)              # Setup Queue
 @app.route('/')
 def index():
     # REMOVE ONCE GIT HAS BEEN INSERTED job = q.enqueue(insert_db, url)
-    job = q.enqueue(update_db, url)
+    #job = q.enqueue(update_db, url)
     
     res = make_response(render_template('index.html', title='Home'), 200)               # Generate response object and return 200
     return res

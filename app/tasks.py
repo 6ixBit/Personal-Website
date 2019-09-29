@@ -3,6 +3,10 @@ from rq import Queue
 from . import db
 from .models import Git
 import requests
+from rq_scheduler import Scheduler
+from redis import Redis
+from rq import Queue
+from datetime import datetime
 
 url = 'https://api.github.com/users/6ixbit/repos?direction=desc'
 
@@ -64,7 +68,6 @@ def update_db(url):
 
     for x in git:                                                   # Once each repo has been pulled
         if x.repo_name == listy[count]['name']:                             # if db val == git api val
-            print(listy[count]['description'])
             if x.description !=  listy[count]['description']:       # if git val has changed then update db
                 x.description = listy[count]['description']
                 db.session.commit()
@@ -91,5 +94,17 @@ def update_db(url):
                 print(x.repo_name + ' repo_url updated')
             else:
                 print('No updates made!')
-            
+
         count += 1
+
+q = Queue(connection=Redis())              # Setup Queue
+
+scheduler = Scheduler(connection=Redis())
+
+job = scheduler.schedule(                                     # Make DB calls every 30 minutes
+    scheduled_time=datetime.utcnow(),
+    func=update_db,
+    args=[url],
+    interval=1800)          
+
+# list_of_job_instances = scheduler.get_jobs() View running jobs
