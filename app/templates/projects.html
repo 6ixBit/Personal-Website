@@ -7,15 +7,23 @@
   All available to see on my <a href='https://www.github.com/6ixbit'>Github.</a>
 </blockquote>
 
+<style>
+  .card{
+    width: 400px;
+    height: 180px;
+  }
+</style>
+
 <div class="card">
-    <header class="card-header"><a href='https://github.com/6ixBit/Personal-Website'>Request Header Parser</a></header>
+    <header class="card-header"><a href='{{ repo_1.repo_url }}'>{{ repo_1.repo_name }}</a></header>
     <div class="card-content">
       <div class="inner">
-         A microservice that parses the header of an incoming request built in Flask.
-
-         About
-        This application returns the header info of a request from a user once they connect to the site. 
-        It also consumes an API to perform IP lookups, so essentially all relevant data about the users request is returned to them and rendered in HTML.
+          {{ repo_1.description }}
+          <br>
+          <div class='inner'>Size : {{repo_1.size}}kb</div>
+          <div class='inner'>
+              <img src='https://circleci.com/gh/6ixBit/Personal-Website.svg?style=shield'>
+          </div>
         </div>
     </div>
 </div>
@@ -23,19 +31,72 @@
 <br>
 
 <div class="card">
-    <header class="card-header"><a href='https://github.com/6ixBit/Personal-Website'>Personal-Website</a></header>
+    <header class="card-header"><a href='{{ repo_2.repo_url }}'>{{ repo_2.repo_name }}</a></header>
     <div class="card-content">
       <div class="inner">
-         My personal website built in Flask.
+          {{ repo_2.description }}
+          <br>
+        </div>
+        <div class='inner'>
+            Size : {{repo_2.size}}kb
+        </div>
+      <div class='inner'>
+          <img src='https://circleci.com/gh/6ixBit/Request_header_parser.svg?style=shield'>
+      </div>
+    </div>
+</div>
+<br>
+<br>
 
-         About
-        This application returns the header info of a request from a user once they connect to the site. 
-        It also consumes an API to perform IP lookups, so essentially all relevant data about the users request is returned to them and rendered in HTML.
+<div class="card">
+    <header class="card-header"><a href='{{ repo_3.repo_url }}'>{{ repo_3.repo_name }}</a></header>
+    <div class="card-content">
+      <div class="inner">
+          {{ repo_3.description }}
+          <br>
+          <div class='inner'>Size : {{repo_3.size}}kb</div>
         </div>
     </div>
 </div>
+<br>
+<br>
 
-
-
+<div class="card">
+    <header class="card-header"><a href='{{ repo_4.repo_url }}'>{{ repo_4.repo_name }}</a></header>
+    <div class="card-content">
+      <div class="inner">
+          {{ repo_4.description }}
+          <br>
+          <div class='inner'>Size : {{repo_4.size}}kb</div>
+        </div>
+    </div>
 </div>
+<br>
+<br>
+</div>
+<br>
+<br>
+<h3>My Public Repositories</h3>
+
+<table>
+    <tr>
+      <th>Repository</th>
+      <th>Description</th>
+      <th>Language</th>
+      <th>Size (kb) </th>
+      <th>Created at</th>
+      <th>Last_updated</th>
+    </tr>
+    {% for repo in git %}
+    <tr>
+      <td><a href='{{ repo.repo_url }}'>{{ repo.repo_name }}</a></td>
+      <td>{{ repo.description }}</td>
+      <td>{{ repo.language }}</td>
+      <td>{{ repo.size }}</td>
+      <td>{{ repo.created_at }}</td>
+      <td>{{ repo.last_updated }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}
