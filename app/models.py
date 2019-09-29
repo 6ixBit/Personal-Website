@@ -1,10 +1,11 @@
 from . import db
 
 class Contacts(db.Model):
-    name_ = db.Column(db.String(), primary_key=True, nullable=False)
-    email = db.Column(db.String(), nullable=False)
-    subject = db.Column(db.String(), nullable=False)
-    message = db.Column(db.String(), nullable=False)
+    id = db.Column(db.Integer(), primary_key=True, nullable=False)
+    name_ = db.Column(db.String(30), nullable=False, unique=False)
+    email = db.Column(db.String(55), nullable=False, unique=False)
+    subject = db.Column(db.String(30), nullable=False, unique=False)
+    message = db.Column(db.String(), nullable=False, unique=False)
 
 class Git(db.Model):
     id = db.Column(db.Integer(),  primary_key=True, nullable=False)

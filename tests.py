@@ -21,8 +21,5 @@ class Test_app(unittest.TestCase):
         rv = self.app.get('/projects')
         self.assertEqual(rv.status_code, 200)
 
-    # Ensure forms on contact page loads
-
-
 if __name__ == '__main__':
     unittest.main()

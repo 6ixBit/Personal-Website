@@ -101,6 +101,12 @@ q = Queue(connection=Redis())              # Setup Queue
 
 scheduler = Scheduler(connection=Redis())
 
+initial_insert_job = scheduler.schedule(
+    scheduled_time=datetime.utcnow(),
+    func=insert_db,
+    args=[url],
+    repeat=0
+)
 job = scheduler.schedule(                                     # Make DB calls every 30 minutes
     scheduled_time=datetime.utcnow(),
     func=update_db,
