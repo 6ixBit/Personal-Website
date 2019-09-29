@@ -1,7 +1,7 @@
 from . import app, mail, db
 from .forms import Contact_form
 from .models import Contacts
-from .tasks import insert_db, url
+from .tasks import insert_db, url, update_db
 from flask import render_template, make_response, request, redirect, url_for
 from flask_mail import Message
 from Config import Config
@@ -13,7 +13,8 @@ q = Queue(connection=r)              # Setup Queue
 
 @app.route('/')
 def index():
-    job = q.enqueue(insert_db, url)
+    # REMOVE ONCE GIT HAS BEEN INSERTED job = q.enqueue(insert_db, url)
+    job = q.enqueue(update_db, url)
     
     res = make_response(render_template('index.html', title='Home'), 200)               # Generate response object and return 200
     return res
