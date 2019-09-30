@@ -10,6 +10,9 @@ from rq import Queue
 
 @app.route('/')
 def index():
+    #q = Queue(connection=Redis())              # Setup Queue
+    #job = q.enqueue(insert_db, url)
+
     res = make_response(render_template('index.html'), 200)               # Generate response object and return 200
     return res
 

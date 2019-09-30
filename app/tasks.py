@@ -1,6 +1,6 @@
 from redis import Redis
 from rq import Queue
-from . import db
+from . import db, app
 from .models import Git
 import requests
 from rq_scheduler import Scheduler
@@ -11,7 +11,7 @@ from datetime import datetime
 url = 'https://api.github.com/users/6ixbit/repos?direction=desc'
 
 def insert_db(url):
-    req = requests.get(url)
+    req = requests.get(url, headers={'Authorization': 'token {}'.format(app.config['GIT_KEY'])})
     result = req.json()
 
     repos = {}
@@ -40,12 +40,14 @@ def insert_db(url):
         # Commit to DB
         db.session.add(git)
         db.session.commit()
+        db.session.close()
+        print('Data points inserted')
 
     return repos
 
 def update_db(url):
 
-    req = requests.get(url)         # Make request to GitHub API
+    req = requests.get(url, headers={'Authorization': 'token {}'.format(app.config['GIT_KEY'])})  # Make request to GitHub API
     result = req.json()             # Serve response as JSON
 
     repos = {}                      # Hold temporary results pulled from Gituhb
@@ -96,21 +98,23 @@ def update_db(url):
                 print('No updates made!')
 
         count += 1
+    db.session.close()
 
 q = Queue(connection=Redis())              # Setup Queue
-
 scheduler = Scheduler(connection=Redis())
 
-initial_insert_job = scheduler.schedule(
-    scheduled_time=datetime.utcnow(),
-    func=insert_db,
-    args=[url],
-    repeat=0
-)
+#initial_insert_job = scheduler.schedule(
+  # scheduled_time=datetime.utcnow(),
+   # func=insert_db,
+   # args=[url],
+   # repeat=0
+#)
 job = scheduler.schedule(                                     # Make DB calls every 30 minutes
     scheduled_time=datetime.utcnow(),
-    func=update_db,
     args=[url],
-    interval=1800)          
+    func=update_db,
+    interval=1800)   
+
+       
 
 # list_of_job_instances = scheduler.get_jobs() View running jobs
