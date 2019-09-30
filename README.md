@@ -6,7 +6,6 @@ Tech Stack:
 - Flask
 - CircleCI
 - Docker
-- Celery
 - Redis (RQ server)
 - Postgres
 
