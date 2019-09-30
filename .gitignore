@@ -102,8 +102,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-<<<<<<< HEAD
-.Config.py
-=======
-.Config.py
->>>>>>> 6246c0e44477cbe4c74d3f1f7e3ce10d8c9d6930
+Config.py
