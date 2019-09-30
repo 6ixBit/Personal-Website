@@ -1,6 +1,10 @@
 from redis import Redis
 from rq import Queue
+<<<<<<< HEAD
 from . import db, app
+=======
+from . import db
+>>>>>>> 6246c0e44477cbe4c74d3f1f7e3ce10d8c9d6930
 from .models import Git
 import requests
 from rq_scheduler import Scheduler
@@ -11,7 +15,11 @@ from datetime import datetime
 url = 'https://api.github.com/users/6ixbit/repos?direction=desc'
 
 def insert_db(url):
+<<<<<<< HEAD
     req = requests.get(url, headers={'Authorization': 'token {}'.format(app.config['GIT_KEY'])})
+=======
+    req = requests.get(url)
+>>>>>>> 6246c0e44477cbe4c74d3f1f7e3ce10d8c9d6930
     result = req.json()
 
     repos = {}
@@ -40,14 +48,21 @@ def insert_db(url):
         # Commit to DB
         db.session.add(git)
         db.session.commit()
+<<<<<<< HEAD
         db.session.close()
         print('Data points inserted')
+=======
+>>>>>>> 6246c0e44477cbe4c74d3f1f7e3ce10d8c9d6930
 
     return repos
 
 def update_db(url):
 
+<<<<<<< HEAD
     req = requests.get(url, headers={'Authorization': 'token {}'.format(app.config['GIT_KEY'])})  # Make request to GitHub API
+=======
+    req = requests.get(url)         # Make request to GitHub API
+>>>>>>> 6246c0e44477cbe4c74d3f1f7e3ce10d8c9d6930
     result = req.json()             # Serve response as JSON
 
     repos = {}                      # Hold temporary results pulled from Gituhb
@@ -98,6 +113,7 @@ def update_db(url):
                 print('No updates made!')
 
         count += 1
+<<<<<<< HEAD
     db.session.close()
 
 q = Queue(connection=Redis())              # Setup Queue
@@ -116,5 +132,23 @@ job = scheduler.schedule(                                     # Make DB calls ev
     interval=1800)   
 
        
+=======
+
+q = Queue(connection=Redis())              # Setup Queue
+
+scheduler = Scheduler(connection=Redis())
+
+initial_insert_job = scheduler.schedule(
+    scheduled_time=datetime.utcnow(),
+    func=insert_db,
+    args=[url],
+    repeat=0
+)
+job = scheduler.schedule(                                     # Make DB calls every 30 minutes
+    scheduled_time=datetime.utcnow(),
+    func=update_db,
+    args=[url],
+    interval=1800)          
+>>>>>>> 6246c0e44477cbe4c74d3f1f7e3ce10d8c9d6930
 
 # list_of_job_instances = scheduler.get_jobs() View running jobs
