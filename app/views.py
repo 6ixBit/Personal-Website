@@ -10,7 +10,7 @@ from rq import Queue
 
 @app.route('/')
 def index():
-    res = make_response(render_template('index.html', title='Home'), 200)               # Generate response object and return 200
+    res = make_response(render_template('index.html'), 200)               # Generate response object and return 200
     return res
 
 
