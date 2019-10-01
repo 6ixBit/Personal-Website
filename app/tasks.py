@@ -6,6 +6,7 @@ from .models import Git
 import requests
 from rq_scheduler import Scheduler
 from redis import Redis
+import redis
 from rq import Queue
 from datetime import datetime
 
@@ -101,7 +102,7 @@ def update_db(url):
         count += 1
     db.session.close()
     
-r = Redis.from_url(os.environ.get("REDIS_URL"))
+r = redis.from_url(os.environ.get("REDIS_URL"))
 q = Queue(connection=r)              # Setup Queue
 
 scheduler = Scheduler(connection=Redis(host='redis_service', port=6379))
