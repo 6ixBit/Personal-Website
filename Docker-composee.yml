@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+  redis:
+    image: redis:5.0-alpine
+    command: redis-server
+    command: rq worker
+    container_name: "my_redis"
+    expose:
+      - "6379"
+    ports:
+      - "6378:6379"
+  db:
+    image: postgres:11.5
+    restart: always
+    container_name: "my_postgres"
+    expose:
+      - 5432
+    env_file: database.conf
+    volumes: 
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "54320:5432"
+    command: createdb personal_website
+    depends_on:
+      - redis
+  web:
+    restart: always
+    container_name: "Web_app"
+    build: .
+    ports: 
+      - "5001:5000"
+    depends_on:
+      - redis
+      - db
+    command: rqscheduler
+    volumes: 
+      - .:/code
+
+      

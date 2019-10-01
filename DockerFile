@@ -1,0 +1,14 @@
+FROM python:latest
+
+EXPOSE 5000
+
+WORKDIR ./app
+
+COPY ./ /app
+
+ENV FLASK_APP=run.py
+ENV FLASK_ENV="docker"
+
+RUN pip install -r requirements.txt
+
+CMD [ "python", "-m", "flask", "run", "--host=0.0.0.0" ]
