@@ -102,8 +102,9 @@ def update_db(url):
         count += 1
     db.session.close()
     
-r = redis.from_url(os.environ.get("REDIS_URL"))
+r = Redis(host=os.environ.get("REDIS_URL"), port=16439, password=os.environ.get('REDIS_PASS'))
 q = Queue(connection=r)              # Setup Queue
+
 
 scheduler = Scheduler(connection=Redis(host='redis_service', port=6379))
 
