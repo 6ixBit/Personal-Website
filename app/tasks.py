@@ -101,8 +101,9 @@ def update_db(url):
         count += 1
     db.session.close()
     
+r = Redis.from_url(os.environ.get("REDIS_URL"))
+q = Queue(connection=r)              # Setup Queue
 
-q = Queue(connection=Redis(os.environ.get("REDIS_URL")))              # Setup Queue
 scheduler = Scheduler(connection=Redis(host='redis_service', port=6379))
 
 initial_insert_job = scheduler.schedule(
