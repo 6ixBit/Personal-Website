@@ -18,4 +18,6 @@ class Config(object):
 
     GIT_KEY = os.environ.get('GIT_KEY') or '9252928fc441bb25ef40fb2db6f6bfb92042674d'
 
+    REDIS_URL = os.environ.get('REDIS_URL') 
+
     

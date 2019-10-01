@@ -1,4 +1,5 @@
 from redis import Redis
+import os
 from rq import Queue
 from . import db, app
 from .models import Git
@@ -101,15 +102,15 @@ def update_db(url):
     db.session.close()
     
 
-q = Queue(connection=Redis())              # Setup Queue
+q = Queue(connection=Redis(os.environ.get("REDIS_URL")))              # Setup Queue
 scheduler = Scheduler(connection=Redis(host='redis_service', port=6379))
 
-#initial_insert_job = scheduler.schedule(
-  # scheduled_time=datetime.utcnow(),
-   # func=insert_db,
-   # args=[url],
-   # repeat=0
-#)
+initial_insert_job = scheduler.schedule(
+   scheduled_time=datetime.utcnow(),
+    func=insert_db,
+    args=[url],
+    repeat=0
+)
 
 job = scheduler.schedule(                                     # Make DB calls every 30 minutes
     scheduled_time=datetime.utcnow(),
