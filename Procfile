@@ -1,2 +1,2 @@
-web: flask db upgrade; redis-server; gunicorn app:app
+web: flask db upgrade; gunicorn app:app
 heroku ps:scale web=1
