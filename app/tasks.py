@@ -102,7 +102,7 @@ def update_db(url):
     
 
 q = Queue(connection=Redis())              # Setup Queue
-scheduler = Scheduler(connection=Redis())
+scheduler = Scheduler(connection=Redis(host='redis_service', port=6379))
 
 #initial_insert_job = scheduler.schedule(
   # scheduled_time=datetime.utcnow(),
