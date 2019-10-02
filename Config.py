@@ -18,6 +18,6 @@ class Config(object):
 
     GIT_KEY = os.environ.get('GIT_KEY') or '9252928fc441bb25ef40fb2db6f6bfb92042674d'
 
-    REDIS_URL = os.environ.get('REDIS_URL') or 'redis://h:p122106cb4c3b8c32eaaddcdfe2113d7c485cf507e82ed14e8e8a5df522ab801c@ec2-34-249-135-201.eu-west-1.compute.amazonaws.com:16439'
+    REDIS_URL = os.environ.get('REDIS_URL') or "redis://h:p122106cb4c3b8c32eaaddcdfe2113d7c485cf507e82ed14e8e8a5df522ab801c@ec2-34-249-135-201.eu-west-1.compute.amazonaws.com:16439"
     REDIS_PASS = os.environ.get('REDIS_PASS') or 'p122106cb4c3b8c32eaaddcdfe2113d7c485cf507e82ed14e8e8a5df522ab801c'
     
