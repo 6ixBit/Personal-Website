@@ -11,7 +11,7 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     MAIL_PORT = os.environ.get('MAIL_PORT') or 587
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'hamzacarew@gmail.com'
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'realvirtualunity@gmail.com'
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.gmail.com'
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') or 1
