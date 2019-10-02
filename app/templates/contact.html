@@ -5,7 +5,6 @@
 {% block content %}
 <center>
     <form method="POST" action='' class='form'>
-        {{ form.csrf_token }}
         {{ wtf.form_errors(form)}}
         <div>
           <fieldset class='form-group'> {{ wtf.form_field(form.name, placeholder='Your name..') }} </fieldset>
