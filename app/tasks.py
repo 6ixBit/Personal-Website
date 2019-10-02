@@ -122,5 +122,3 @@ job = scheduler.schedule(                                     # Make DB calls ev
     interval=1800)   
 print('Job enqueued', job)
  
-list_of_job_instances = scheduler.get_jobs()   # View running jobs
-print(list_of_job_instances)
