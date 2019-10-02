@@ -105,8 +105,8 @@ def update_db(url):
 r = Redis(host=os.environ.get("REDIS_URL"))    # Setup Redis
 q = Queue(connection=r)                        # Setup Queue
 
-#scheduler = Scheduler(connection=redis.from_url(os.environ.get("REDIS_URL")))
-scheduler = Scheduler(queue=q)
+scheduler = Scheduler(connection=redis.from_url(os.environ.get("REDIS_URL")))
+#scheduler = Scheduler(queue=q)
 
 initial_insert_job = scheduler.schedule(
    scheduled_time=datetime.utcnow(),
