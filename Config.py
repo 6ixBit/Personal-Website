@@ -12,12 +12,12 @@ class Config(object):
 
     MAIL_PORT = os.environ.get('MAIL_PORT') or 587
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'hamzacarew@gmail.com'
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or ''
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.gmail.com'
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') or 1
 
     GIT_KEY = os.environ.get('GIT_KEY') or '9252928fc441bb25ef40fb2db6f6bfb92042674d'
 
     REDIS_URL = os.environ.get('REDIS_URL') or "redis://h:p122106cb4c3b8c32eaaddcdfe2113d7c485cf507e82ed14e8e8a5df522ab801c@ec2-34-249-135-201.eu-west-1.compute.amazonaws.com:16439"
-    REDIS_PASS = os.environ.get('REDIS_PASS') or 'p122106cb4c3b8c32eaaddcdfe2113d7c485cf507e82ed14e8e8a5df522ab801c'
+
     
