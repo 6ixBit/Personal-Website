@@ -110,8 +110,7 @@ scheduler = Scheduler(connection=redis.from_url(os.environ.get("REDIS_URL")))
 initial_insert_job = scheduler.schedule(
    scheduled_time=datetime.utcnow(),
     func=insert_db,
-    args=[url],
-    repeat=1
+    args=[url]
 )
 print('Job enqueued', initial_insert_job)
 
@@ -119,6 +118,7 @@ job = scheduler.schedule(                                     # Make DB calls ev
     scheduled_time=datetime.utcnow(),
     args=[url],
     func=update_db,
+    repeat=None,
     interval=1800)   
 print('Job enqueued', job)
  
