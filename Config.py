@@ -5,7 +5,7 @@ class Config(object):
     FLASK_APP = os.environ.get('FLASK_APP') or 'run.py'
     FLASK_DEBUG = os.environ.get('FLASK_DEBUG') or 1
 
-    SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(32)
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'testtokenthatyoullneverguess'
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or "postgres://nutxlvhtpibzjo:cd5c9be50c8944bc2b76842e4becdb5b3edd9dd9db291a0ef1f9efab47d23baf@ec2-176-34-184-174.eu-west-1.compute.amazonaws.com:5432/ddr1gtuc6chhp3"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
