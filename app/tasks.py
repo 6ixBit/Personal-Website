@@ -8,7 +8,7 @@ from rq_scheduler import Scheduler
 from redis import Redis
 import redis
 from rq import Queue
-from datetime import timedelta
+from datetime import datetime
 
 url = 'https://api.github.com/users/6ixbit/repos?direction=desc'
 
