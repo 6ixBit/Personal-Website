@@ -111,8 +111,9 @@ initial_insert_job = scheduler.schedule(
    scheduled_time=datetime.utcnow(),
     func=insert_db,
     args=[url],
-    repeat=0
+    repeat=1
 )
+print('Job enqueued', initial_insert_job)
 
 job = scheduler.schedule(                                     # Make DB calls every 30 minutes
     scheduled_time=datetime.utcnow(),
@@ -120,5 +121,6 @@ job = scheduler.schedule(                                     # Make DB calls ev
     func=update_db,
     interval=1800)   
 print('Job enqueued', job)
-
-# list_of_job_instances = scheduler.get_jobs() View running jobs
+ 
+list_of_job_instances = scheduler.get_jobs()   # View running jobs
+print(list_of_job_instances)
