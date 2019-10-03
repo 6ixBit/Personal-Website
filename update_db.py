@@ -1,13 +1,7 @@
-from redis import Redis
 import os
-from rq import Queue
-from . import db, app
-from .models import Git
+from app import db, app
+from app.models import Git
 import requests
-from rq_scheduler import Scheduler
-import redis
-from rq import Queue
-from datetime import datetime
 
 url = 'https://api.github.com/users/6ixbit/repos?direction=desc'
 
@@ -65,17 +59,5 @@ def update_db(url):
 
         count += 1
     db.session.close()
-    
-#r = Redis(host=os.environ.get("REDIS_URL"))    # Setup Redis
-#q = Queue(connection=r)                        # Setup Queue
 
-#scheduler = Scheduler(connection=redis.from_url(os.environ.get("REDIS_URL")))
-
-#job = scheduler.schedule(                                     # Make DB calls every 30 minutes
-  #  scheduled_time=datetime.utcnow(),
-   # args=[url],
-   # func=update_db,
-    #repeat=None,
-    #interval=1800)   
-#print('Job enqueued', job)
- 
+update_db(url)
