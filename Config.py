@@ -16,7 +16,7 @@ class Config(object):
     MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.gmail.com'
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') or 1
 
-    GIT_KEY = os.environ.get('GIT_KEY') or '9252928fc441bb25ef40fb2db6f6bfb92042674d'
+    GIT_KEY = os.environ.get('GIT_KEY')
 
     REDIS_URL = os.environ.get('REDIS_URL')
 

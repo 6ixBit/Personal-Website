@@ -14,4 +14,4 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 mail = Mail(app)
 
-from app import views, forms, models, errors, tasks
+from app import views, forms, models, errors, tasks, insert_db

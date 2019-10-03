@@ -1,7 +1,7 @@
 from . import app, mail, db
 from .forms import Contact_form
 from .models import Contacts, Git
-from .tasks import insert_db, url, update_db
+from .tasks import url, update_db
 from flask import render_template, make_response, request, redirect, url_for
 from flask_mail import Message
 from Config import Config
@@ -10,9 +10,6 @@ from rq import Queue
 
 @app.route('/')
 def index():
-    #q = Queue(connection=Redis())              # Setup Queue
-    #job = q.enqueue(insert_db, url)
-
     res = make_response(render_template('index.html'), 200)               # Generate response object and return 200
     return res
 
