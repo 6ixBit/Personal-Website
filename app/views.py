@@ -43,7 +43,7 @@ def contact():
         if form_c.validate_on_submit():
             form = Contact_form()
 
-            msg = Message(subject=form.subject.data, recipients=[app.config['MAIL_USERNAME']], sender=app.config['MAIL_USERNAME'])
+            msg = Message(subject=form.subject.data, recipients=['hamzacarew@gmail.com'], sender=app.config['MAIL_USERNAME'])
             msg.body = 'From: {} \n\n'.format(form.name.data) + form.message.data + '\n \n \n Sent by: {}'.format(form.email.data)
             mail.send(msg)
             email_sent = True                    # Alert user that email has been sent
