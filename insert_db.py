@@ -1,6 +1,8 @@
-from . import db, app
-from .models import Git
+from app import app, db
+from app.models import Git
 import requests
+
+url = 'https://api.github.com/users/6ixbit/repos?direction=desc'
 
 def insert_db(url):
     req = requests.get(url, headers={'Authorization': 'token {}'.format(app.config['GIT_KEY'])})
@@ -35,5 +37,4 @@ def insert_db(url):
         db.session.close()
         print('Data points inserted')
 
-
-#insert_db(url)         # Pre-populate DB upon deployment
+insert_db(url)         # Pre-populate DB upon deployment
