@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
 <div class='grid'>
 <blockquote>
   These are some of the project i've worked on, they range from multiple areas that interest me. <br>
@@ -84,8 +88,6 @@
       <th>Description</th>
       <th>Language</th>
       <th>Size (kb) </th>
-      <th>Created at</th>
-      <th>Last_updated</th>
     </tr>
     {% for repo in git %}
     <tr>
@@ -93,8 +95,6 @@
       <td>{{ repo.description }}</td>
       <td>{{ repo.language }}</td>
       <td>{{ repo.size }}</td>
-      <td>{{ repo.created_at }}</td>
-      <td>{{ repo.last_updated }}</td>
     </tr>
     {% endfor %}
 </table>
