@@ -9,3 +9,6 @@ Tech Stack:
 - Redis (RQ server) - To update Git repos every hour on /projects route
 - Postgres - Store repo data pulled from GItHub 
 
+# Run
+1. Activate virtual env using: source venv/bin/activate on your terminal
+2. enter flask run in youe terminal
