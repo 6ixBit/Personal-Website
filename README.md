@@ -11,4 +11,5 @@ Tech Stack:
 
 # Run
 1. Activate virtual env using: source venv/bin/activate on your terminal
+2. set environment varibale if not running with Docker. export flask_app=run.py
 2. enter flask run in youe terminal
