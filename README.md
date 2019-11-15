@@ -1,4 +1,4 @@
-# Personal-Website [![build](https://circleci.com/gh/6ixBit/Personal-Website.svg?style=shield)](https://circleci.com/gh/6ixBit/Personal-Website)
+# Personal-Website 
 My Personal website built with Flask and hack.css (hackcss.egoist.moe)
 
 Tech Stack:
